@@ -16,10 +16,9 @@ public class OrdenacaoArray {
 		  
 		System.out.println();
 		
-		OrdenacaoArray(arrayRandom);
-		  
+		OrdenacaoArray(arrayRandom); 
 		ApresentaArray(arrayRandom);
-		 
+		ApresentaArray(arrayRandom); 
 
 	}
 
