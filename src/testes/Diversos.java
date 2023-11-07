@@ -1,13 +1,13 @@
 package testes;
 
-import java.time.LocalDate;
+import java.util.LinkedList;
 
 public class Diversos {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int a = 5;
+		/*int a = 5;
 		int b = 10;
 		String answer;
 		Integer c;
@@ -20,6 +20,15 @@ public class Diversos {
 		LocalDate data01 =  LocalDate.now();
 		System.out.println(data01);
 		//LocalDate.parse
+		*/
+	
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
