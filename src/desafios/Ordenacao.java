@@ -6,6 +6,52 @@ public class Ordenacao {
 
 	public static void main(String[] args) {
 
+		/*int[] elementos = criaVetorIntAleatorio();
+
+		leituraVetorInt(elementos);
+
+		System.out.println("\nOrdenacao Crescente:");
+		ordenacaoBubbleSort(elementos);
+		leituraVetorInt(elementos);
+
+		System.out.println("\nOrdenacao decrescente:");
+		ordenacaoBubbleSortDecrescente(elementos);
+		leituraVetorInt(elementos);
+		*/
+		
+		String[] elementosString = {"banana", "laranja", "abacaxi", "uva", "melancia"};
+		System.out.println("Leitura do vetor: ");
+		for (String string : elementosString) {
+			System.out.print(string + " ");
+		}
+		
+		//System.out.println(elementosString[0].compareTo(elementosString[3]));
+		
+		for (int i = 0; i < elementosString.length; i++) {
+			for (int j = 0; j < elementosString.length; j++) {
+				if((j+1 < elementosString.length) && (elementosString[j].compareTo(elementosString[j+1])>0)){
+				String temporario = elementosString[j+1];
+				elementosString[j+1] = elementosString[j];
+				elementosString[j] = temporario;
+				}
+			}
+		}
+		
+		System.out.println("\nLeitura do vetor ordenado: ");
+		
+		for (String string : elementosString) {
+			System.out.print(string + " ");
+		}
+		/*
+		if(elementosString[i].length > elementosString[i+1].length){
+			String temporario = elementosString[i+1];
+			elementosString[i+1] = elementosString[i];
+			elementosString[i] = temporario;
+		}
+		*/
+	}
+
+	public static int[] criaVetorIntAleatorio() {
 		Scanner leitura = new Scanner(System.in);
 		System.out.println("Informe o tamanho do vetor de int desejado: ");
 		int tamanhoVetor = leitura.nextInt();
@@ -14,15 +60,7 @@ public class Ordenacao {
 		for (int i = 0; i < elementos.length; i++) {
 			elementos[i] = (int) (Math.random() * 100);
 		}
-
-		leituraVetorInt(elementos);
-
-		ordenacaoBubbleSort(elementos);
-		leituraVetorInt(elementos);
-
-		ordenacaoBubbleSortDecrescente(elementos);
-		leituraVetorInt(elementos);
-
+		return elementos;
 	}
 
 	public static void leituraVetorInt(int[] elementos) {
