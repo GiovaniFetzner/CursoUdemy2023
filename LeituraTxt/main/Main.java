@@ -16,7 +16,7 @@ public class Main {
 
 		if (arquivotxt.exists()) {
 			try {
-				BufferedWriter writer = new BufferedWriter(new FileWriter(arquivotxt,true));
+				BufferedWriter writer = new BufferedWriter(new FileWriter(arquivotxt,true)); // True permitindo append
 				System.out.println("*** Inicio da escrita ***");
 				writer.newLine();
 				for (int i = 1; i < 11; i++) {
