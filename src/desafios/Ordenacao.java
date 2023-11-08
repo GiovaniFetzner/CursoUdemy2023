@@ -6,49 +6,54 @@ public class Ordenacao {
 
 	public static void main(String[] args) {
 
-		/*int[] elementos = criaVetorIntAleatorio();
+		/*
+		 * int[] elementos = criaVetorIntAleatorio();
+		 * 
+		 * leituraVetorInt(elementos);
+		 * 
+		 * System.out.println("\nOrdenacao Crescente:"); ordenacaoBubbleSort(elementos);
+		 * leituraVetorInt(elementos);
+		 * 
+		 * System.out.println("\nOrdenacao decrescente:");
+		 * ordenacaoBubbleSortDecrescente(elementos); leituraVetorInt(elementos);
+		 */
 
-		leituraVetorInt(elementos);
+		String[] elementosString = { "banana", "laranja", "abacaxi", "uva", "melancia" };
+		leituraVetor(elementosString);
 
-		System.out.println("\nOrdenacao Crescente:");
-		ordenacaoBubbleSort(elementos);
-		leituraVetorInt(elementos);
+		// System.out.println(elementosString[0].compareTo(elementosString[3]));
 
-		System.out.println("\nOrdenacao decrescente:");
-		ordenacaoBubbleSortDecrescente(elementos);
-		leituraVetorInt(elementos);
-		*/
-		
-		String[] elementosString = {"banana", "laranja", "abacaxi", "uva", "melancia"};
-		System.out.println("Leitura do vetor: ");
-		for (String string : elementosString) {
-			System.out.print(string + " ");
-		}
-		
-		//System.out.println(elementosString[0].compareTo(elementosString[3]));
-		
+		ordenacaoStringUsandoCompareTo(elementosString);
+
+		leituraVetor(elementosString);
+		ordenacaoStringPorTamanho(elementosString);
+
+		leituraVetor(elementosString);
+	}
+
+	public static void ordenacaoStringPorTamanho(String[] elementosString) {
 		for (int i = 0; i < elementosString.length; i++) {
 			for (int j = 0; j < elementosString.length; j++) {
-				if((j+1 < elementosString.length) && (elementosString[j].compareTo(elementosString[j+1])>0)){
-				String temporario = elementosString[j+1];
-				elementosString[j+1] = elementosString[j];
-				elementosString[j] = temporario;
+				if (((j + 1) < elementosString.length)
+						&& (elementosString[j].length() > elementosString[j + 1].length())) {
+					String temporario = elementosString[j + 1];
+					elementosString[j + 1] = elementosString[j];
+					elementosString[j] = temporario;
 				}
 			}
 		}
-		
-		System.out.println("\nLeitura do vetor ordenado: ");
-		
-		for (String string : elementosString) {
-			System.out.print(string + " ");
+	}
+
+	public static void ordenacaoStringUsandoCompareTo(String[] elementosString) {
+		for (int i = 0; i < elementosString.length; i++) {
+			for (int j = 0; j < elementosString.length; j++) {
+				if ((j + 1 < elementosString.length) && (elementosString[j].compareTo(elementosString[j + 1]) > 0)) {
+					String temporario = elementosString[j + 1];
+					elementosString[j + 1] = elementosString[j];
+					elementosString[j] = temporario;
+				}
+			}
 		}
-		/*
-		if(elementosString[i].length > elementosString[i+1].length){
-			String temporario = elementosString[i+1];
-			elementosString[i+1] = elementosString[i];
-			elementosString[i] = temporario;
-		}
-		*/
 	}
 
 	public static int[] criaVetorIntAleatorio() {
@@ -63,9 +68,9 @@ public class Ordenacao {
 		return elementos;
 	}
 
-	public static void leituraVetorInt(int[] elementos) {
+	public static void leituraVetor(Object[] elementos) {
 		System.out.println("Elementos do vetor: ");
-		for (int i : elementos) {
+		for (Object i : elementos) {
 			System.out.print(i + " ");
 		}
 		System.out.println();
