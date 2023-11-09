@@ -6,7 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="DesafioEnum"/>
-	<classpathentry kind="src" path="LeituraTxt"/>
+	<classpathentry kind="src" path="desafioEnum"/>
+	<classpathentry kind="src" path="leituraTxt"/>
+	<classpathentry kind="src" path="reservaHotel"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
