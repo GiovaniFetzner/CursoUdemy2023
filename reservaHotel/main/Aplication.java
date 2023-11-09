@@ -15,6 +15,7 @@ public class Aplication {
 	        } catch (UnsupportedEncodingException e) {
 	            e.printStackTrace();
 	        }
+		  
 		
 		Scanner leitura = new Scanner(System.in);
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -34,12 +35,10 @@ public class Aplication {
 		
 		Reservation reservation01 = new Reservation(numeroQuarto,dataCheckIn,dataCheckOut);	
 
-		System.out.println("Duracao da reserva " + reservation01.duration(dataCheckIn, dataCheckOut));
+		System.out.println("Duração da reserva " + reservation01.duration(dataCheckIn, dataCheckOut));
 		
-		System.out.println("DATA : " + dataCheckIn.format(format));
-		
-		System.out.println("DATA : " + dataCheckOut.format(format));
-		
+		System.out.println(reservation01.toString());
+	
 		
 	}
 
