@@ -34,11 +34,13 @@ public class Reservation {
 
 	}
 
-	private void validacaoReserva(LocalDate checkIn, LocalDate checkOut) throws DateErrorException {
-		if (duration(checkIn, checkOut) <= 0) {
+	public boolean validacaoReserva(LocalDate checkIn, LocalDate checkOut) throws DateErrorException {
+		if (duration(checkIn, checkOut) > 0) {
+			return true;
+		}else {			
 			throw new DateErrorException("Erro na reserva: Data de checkOut deve ser superior a data de checkIn");
-
 		}
+		
 	}
 
 	private void validacaoAtualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn,
