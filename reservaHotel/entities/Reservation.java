@@ -9,45 +9,45 @@ public class Reservation {
 
 	private int roomNumber;
 	private LocalDate checkIn, checkOut;
-	
-	public Reservation (int numeroQuarto, LocalDate checkIn, LocalDate checkOut){
-		this.
-		setCheckIn(checkIn);
+
+	public Reservation(int numeroQuarto, LocalDate checkIn, LocalDate checkOut) throws DateErrorException {
+		this.setCheckIn(checkIn);
 		setCheckOut(checkOut);
 		setRoomNumber(numeroQuarto);
-		
-		validacaoReserva(checkIn,checkOut);
+
+		validacaoReserva(checkIn, checkOut);
 	}
 
 	public long duration(LocalDate checkIn, LocalDate checkOut) {
-        LocalDateTime checkInDateTime = checkIn.atStartOfDay();
-        LocalDateTime checkOutDateTime = checkOut.atStartOfDay();
-        Duration timeDuration = Duration.between(checkInDateTime, checkOutDateTime);
+		LocalDateTime checkInDateTime = checkIn.atStartOfDay();
+		LocalDateTime checkOutDateTime = checkOut.atStartOfDay();
+		Duration timeDuration = Duration.between(checkInDateTime, checkOutDateTime);
 
 		return timeDuration.toDays();
 	}
-	
-	public void atualizarReserva(LocalDate checkIn, LocalDate checkOut,
-			LocalDate novoCheckIn, LocalDate novoCheckOut) {
+
+	public void atualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn, LocalDate novoCheckOut) throws DateErrorException {
 		validacaoAtualizarReserva(checkIn, checkOut, novoCheckIn, novoCheckOut);
 		System.out.println("Aqui precisa para na exception !!!!!!!!");
 		setCheckIn(checkIn);
 		setCheckIn(checkOut);
-		
+
 	}
-	
-	private void validacaoReserva(LocalDate checkIn, LocalDate checkOut) {
-		if (duration(checkIn, checkOut) <= 0){
-			System.out.println("Erro na reserva:");
-			System.out.println("CheckOut deve conter uma data posterior ao checkIn");
+
+	private void validacaoReserva(LocalDate checkIn, LocalDate checkOut) throws DateErrorException {
+		if (duration(checkIn, checkOut) <= 0) {
+			throw new DateErrorException("Erro na reserva: Data de checkOut deve ser superior a data de checkIn");
+
 		}
 	}
-	
-	private void validacaoAtualizarReserva(LocalDate checkIn, LocalDate checkOut,
-			LocalDate novoCheckIn, LocalDate novoCheckOut) {
-		if((duration(novoCheckIn, checkIn) <= 0) || (duration(novoCheckOut, checkOut) <= 0)) {
-			System.out.println("Erro na reserva:");
-			System.out.println("Data de atualização errada, deve ser posterior as atuais");
+
+	private void validacaoAtualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn,
+			LocalDate novoCheckOut) throws DateErrorException { //ARRUMAR VALIDAÇÕES DAS DATAS
+		if (duration(novoCheckIn, novoCheckOut) <= 0) {
+			throw new DateErrorException("Erro na reserva: Data de checkOut deve ser superior a data de checkIn");
+
+		} else if ((duration(novoCheckIn, checkIn) <= 0) && (duration(novoCheckOut, checkOut) <= 0)) {
+			throw new DateErrorException("Erro na reserva: As datas devem ser superiores as datas antigas");
 		}
 	}
 
@@ -70,27 +70,25 @@ public class Reservation {
 	public void setCheckIn(LocalDate checkIn) {
 		this.checkIn = checkIn;
 	}
-	
-		public void setCheckOut(LocalDate checkOut) {
+
+	public void setCheckOut(LocalDate checkOut) {
 		this.checkOut = checkOut;
 	}
 //	public void setCheckIn(String date) {
 //		this.checkIn = verificaData(date);
 //	}
 
-		@Override
-		public String toString() {
-			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append("Reserva: \n");
-			stringBuilder.append("Número do quarto: " + roomNumber + ", ");
-			stringBuilder.append("checkIn: " + checkIn + ", ");
-			stringBuilder.append("checkOut: " + checkOut + ", ");
-			stringBuilder.append("duração: " + duration(checkIn, checkOut) + " noites");
-			return stringBuilder.toString();
-		}
+	@Override
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Reserva: \n");
+		stringBuilder.append("Número do quarto: " + roomNumber + ", ");
+		stringBuilder.append("checkIn: " + checkIn + ", ");
+		stringBuilder.append("checkOut: " + checkOut + ", ");
+		stringBuilder.append("duração: " + duration(checkIn, checkOut) + " noites");
+		return stringBuilder.toString();
+	}
 
-
-	
 //	public void setCheckOut(String date) {
 //		this.checkOut = verificaData(date);
 //	}
@@ -99,7 +97,5 @@ public class Reservation {
 //		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 //		return LocalDate.parse(date,format);
 //	}
-	
-		
 
 }
