@@ -26,7 +26,8 @@ public class Reservation {
 		return timeDuration.toDays();
 	}
 
-	public void atualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn, LocalDate novoCheckOut) throws DateErrorException {
+	public void atualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn, LocalDate novoCheckOut)
+			throws DateErrorException {
 		validacaoAtualizarReserva(checkIn, checkOut, novoCheckIn, novoCheckOut);
 		System.out.println("Aqui precisa para na exception !!!!!!!!");
 		setCheckIn(checkIn);
@@ -37,20 +38,21 @@ public class Reservation {
 	public boolean validacaoReserva(LocalDate checkIn, LocalDate checkOut) throws DateErrorException {
 		if (duration(checkIn, checkOut) > 0) {
 			return true;
-		}else {			
+		} else {
 			throw new DateErrorException("Erro na reserva: Data de checkOut deve ser superior a data de checkIn");
 		}
-		
+
 	}
 
-	private void validacaoAtualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn,
-			LocalDate novoCheckOut) throws DateErrorException { //ARRUMAR VALIDAÇÕES DAS DATAS
+	public boolean validacaoAtualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn,
+			LocalDate novoCheckOut) throws DateErrorException { // ARRUMAR VALIDAÇÕES DAS DATAS
 		if (duration(novoCheckIn, novoCheckOut) <= 0) {
 			throw new DateErrorException("Erro na reserva: Data de checkOut deve ser superior a data de checkIn");
 
-		} else if ((duration(novoCheckIn, checkIn) <= 0) && (duration(novoCheckOut, checkOut) <= 0)) {
+		} else if ((duration(novoCheckIn, checkIn) <= 0) || (duration(novoCheckOut, checkOut) <= 0)) {
 			throw new DateErrorException("Erro na reserva: As datas devem ser superiores as datas antigas");
 		}
+		return true;
 	}
 
 	public int getRoomNumber() {
