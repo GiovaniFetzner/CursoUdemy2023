@@ -177,4 +177,79 @@ class ReservationTest {
 		}
 
 	}
+	
+	@Test
+	void validacaoAtualizarReservaDataInvalida03() { // NovoCheckIn e NovoCheckOut  mais antigos que checkIn e CheckOut
+		in = "10/10/2010";
+		out = "15/10/2010";
+		dataCheckIn = LocalDate.parse(in, format);
+		dataCheckOut = LocalDate.parse(out, format);
+		novoIn = "05/10/2010";
+		novoOut = "10/10/2010";
+		novoDataCheckIn = LocalDate.parse(novoIn, format);
+		novoDataCheckOut = LocalDate.parse(novoOut, format);
+		reservationController = null;
+		try {
+			reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
+			assertThrows(DateErrorException.class, () -> {
+				reservationController.validacaoAtualizarReserva(dataCheckIn, dataCheckOut, novoDataCheckIn,
+						novoDataCheckOut);
+			});
+
+		} catch (DateErrorException e1) {
+
+		}
+		
+	}
+	
+	@Test
+		void durationTest01() {
+			in = "10/10/2010";
+			out = "15/10/2010";
+			dataCheckIn = LocalDate.parse(in, format);
+			dataCheckOut = LocalDate.parse(out, format);
+			reservationController = null;
+			try {
+				reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
+				assertEquals(reservationController.duration(dataCheckIn, dataCheckOut), 5);
+			
+			}catch (DateErrorException e) {
+				// TODO: handle exception
+			}
+			
+		}
+	
+	@Test
+	void durationTest02() {
+		in = "10/10/2010";
+		out = "10/10/2010";
+		dataCheckIn = LocalDate.parse(in, format);
+		dataCheckOut = LocalDate.parse(out, format);
+		reservationController = null;
+		try {
+			reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
+			assertEquals(reservationController.duration(dataCheckIn, dataCheckOut), 0);
+		
+		}catch (DateErrorException e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+	@Test
+	void durationTest03() {
+		in = "15/10/2010";
+		out = "10/10/2010";
+		dataCheckIn = LocalDate.parse(in, format);
+		dataCheckOut = LocalDate.parse(out, format);
+		reservationController = null;
+		try {
+			reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
+			assertEquals(reservationController.duration(dataCheckIn, dataCheckOut), (-5));
+		
+		}catch (DateErrorException e) {
+			// TODO: handle exception
+		}
+		
+	}
 }

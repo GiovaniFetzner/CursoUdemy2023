@@ -49,7 +49,7 @@ public class Reservation {
 		if (duration(novoCheckIn, novoCheckOut) <= 0) {
 			throw new DateErrorException("Erro na reserva: Data de checkOut deve ser superior a data de checkIn");
 
-		} else if ((duration(novoCheckIn, checkIn) <= 0) || (duration(novoCheckOut, checkOut) <= 0)) {
+		} else if ((duration(checkIn,novoCheckIn ) < 0) || (duration(checkOut, novoCheckOut) <= 0)) {
 			throw new DateErrorException("Erro na reserva: As datas devem ser superiores as datas antigas");
 		}
 		return true;
