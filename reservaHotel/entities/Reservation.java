@@ -3,7 +3,7 @@ package entities;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-//import java.time.format.DateTimeFormatter;
+
 
 public class Reservation {
 
@@ -29,7 +29,6 @@ public class Reservation {
 	public void atualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn, LocalDate novoCheckOut)
 			throws DateErrorException {
 		validacaoAtualizarReserva(checkIn, checkOut, novoCheckIn, novoCheckOut);
-		System.out.println("Aqui precisa para na exception !!!!!!!!");
 		setCheckIn(checkIn);
 		setCheckIn(checkOut);
 
@@ -45,7 +44,7 @@ public class Reservation {
 	}
 
 	public boolean validacaoAtualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn,
-			LocalDate novoCheckOut) throws DateErrorException { // ARRUMAR VALIDAÇÕES DAS DATAS
+			LocalDate novoCheckOut) throws DateErrorException { 
 		if (duration(novoCheckIn, novoCheckOut) <= 0) {
 			throw new DateErrorException("Erro na reserva: Data de checkOut deve ser superior a data de checkIn");
 
@@ -78,9 +77,6 @@ public class Reservation {
 	public void setCheckOut(LocalDate checkOut) {
 		this.checkOut = checkOut;
 	}
-//	public void setCheckIn(String date) {
-//		this.checkIn = verificaData(date);
-//	}
 
 	@Override
 	public String toString() {
@@ -92,14 +88,5 @@ public class Reservation {
 		stringBuilder.append("duração: " + duration(checkIn, checkOut) + " noites");
 		return stringBuilder.toString();
 	}
-
-//	public void setCheckOut(String date) {
-//		this.checkOut = verificaData(date);
-//	}
-
-//	private LocalDate verificaData(String date) {
-//		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//		return LocalDate.parse(date,format);
-//	}
 
 }

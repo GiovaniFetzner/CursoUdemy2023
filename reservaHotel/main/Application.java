@@ -8,7 +8,7 @@ import java.util.Scanner;
 import entities.DateErrorException;
 import entities.Reservation;
 
-public class Aplication {
+public class Application {
 
 	public static void main(String[] args) {
 		
@@ -61,8 +61,8 @@ public class Aplication {
 		System.out.println("Data de checkOut (dd/MM/yyyy): ");
 		String outAtualizado = leitura.nextLine();
 		
-		LocalDate dataCheckInAtualizado = LocalDate.parse(in, format);
-		LocalDate dataCheckOutAtualizado = LocalDate.parse(out, format);
+		LocalDate dataCheckInAtualizado = LocalDate.parse(inAtualizado, format);
+		LocalDate dataCheckOutAtualizado = LocalDate.parse(outAtualizado, format);
 		
 		try {
 			reservation01.atualizarReserva(dataCheckIn, dataCheckOut, dataCheckInAtualizado, dataCheckOutAtualizado);

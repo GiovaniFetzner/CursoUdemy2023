@@ -108,9 +108,10 @@ class ReservationTest {
 		}
 
 	}
-	
+
 	@Test
-	void validacaoAtualizarReservaDataValida02() { // NovoCheckIn igual ao checkIn e com novoCheckOut posterior ao checkOut
+	void validacaoAtualizarReservaDataValida02() { // NovoCheckIn igual ao checkIn e com novoCheckOut posterior ao
+													// checkOut
 		in = "10/10/2010";
 		out = "15/10/2010";
 		dataCheckIn = LocalDate.parse(in, format);
@@ -153,9 +154,10 @@ class ReservationTest {
 		}
 
 	}
-	
+
 	@Test
-	void validacaoAtualizarReservaDataInvalida02() { // NovoCheckIn mais antigo que o CheckIn, com NovoCheckOut posterior ao CheckOut
+	void validacaoAtualizarReservaDataInvalida02() { // NovoCheckIn mais antigo que o CheckIn, com NovoCheckOut
+														// posterior ao CheckOut
 		in = "10/10/2010";
 		out = "15/10/2010";
 		dataCheckIn = LocalDate.parse(in, format);
@@ -177,9 +179,9 @@ class ReservationTest {
 		}
 
 	}
-	
+
 	@Test
-	void validacaoAtualizarReservaDataInvalida03() { // NovoCheckIn e NovoCheckOut  mais antigos que checkIn e CheckOut
+	void validacaoAtualizarReservaDataInvalida03() { // NovoCheckIn e NovoCheckOut mais antigos que checkIn e CheckOut
 		in = "10/10/2010";
 		out = "15/10/2010";
 		dataCheckIn = LocalDate.parse(in, format);
@@ -199,28 +201,49 @@ class ReservationTest {
 		} catch (DateErrorException e1) {
 
 		}
-		
+
 	}
-	
+
 	@Test
-		void durationTest01() {
-			in = "10/10/2010";
-			out = "15/10/2010";
-			dataCheckIn = LocalDate.parse(in, format);
-			dataCheckOut = LocalDate.parse(out, format);
-			reservationController = null;
-			try {
-				reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
-				assertEquals(reservationController.duration(dataCheckIn, dataCheckOut), 5);
-			
-			}catch (DateErrorException e) {
-				// TODO: handle exception
-			}
-			
+	void validacaoAtualizarReservaDataAleatoria() { // Teste aleatório
+		in = "10/12/2010";
+		out = "15/02/2011";
+		dataCheckIn = LocalDate.parse(in, format);
+		dataCheckOut = LocalDate.parse(out, format);
+		novoIn = "10/12/2011";
+		novoOut = "12/04/2012";
+		novoDataCheckIn = LocalDate.parse(novoIn, format);
+		novoDataCheckOut = LocalDate.parse(novoOut, format);
+		reservationController = null;
+		try {
+			reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
+			assertTrue(reservationController.validacaoAtualizarReserva(dataCheckIn, dataCheckOut, novoDataCheckIn,
+					novoDataCheckOut));
+		} catch (DateErrorException e1) {
+
 		}
-	
+
+	}
+
 	@Test
-	void durationTest02() {
+	void durationTest01() { // Diferença 5 dias
+		in = "10/10/2010";
+		out = "15/10/2010";
+		dataCheckIn = LocalDate.parse(in, format);
+		dataCheckOut = LocalDate.parse(out, format);
+		reservationController = null;
+		try {
+			reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
+			assertEquals(reservationController.duration(dataCheckIn, dataCheckOut), 5);
+
+		} catch (DateErrorException e) {
+			// TODO: handle exception
+		}
+
+	}
+
+	@Test
+	void durationTest02() { // Diferença = 0, datas iguais
 		in = "10/10/2010";
 		out = "10/10/2010";
 		dataCheckIn = LocalDate.parse(in, format);
@@ -229,15 +252,15 @@ class ReservationTest {
 		try {
 			reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
 			assertEquals(reservationController.duration(dataCheckIn, dataCheckOut), 0);
-		
-		}catch (DateErrorException e) {
+
+		} catch (DateErrorException e) {
 			// TODO: handle exception
 		}
-		
+
 	}
-	
+
 	@Test
-	void durationTest03() {
+	void durationTest03() { // Diferença -5, datas invertidas
 		in = "15/10/2010";
 		out = "10/10/2010";
 		dataCheckIn = LocalDate.parse(in, format);
@@ -246,10 +269,10 @@ class ReservationTest {
 		try {
 			reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
 			assertEquals(reservationController.duration(dataCheckIn, dataCheckOut), (-5));
-		
-		}catch (DateErrorException e) {
+
+		} catch (DateErrorException e) {
 			// TODO: handle exception
 		}
-		
+
 	}
 }
