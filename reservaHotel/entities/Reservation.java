@@ -29,8 +29,8 @@ public class Reservation {
 	public void atualizarReserva(LocalDate checkIn, LocalDate checkOut, LocalDate novoCheckIn, LocalDate novoCheckOut)
 			throws DateErrorException {
 		validacaoAtualizarReserva(checkIn, checkOut, novoCheckIn, novoCheckOut);
-		setCheckIn(checkIn);
-		setCheckIn(checkOut);
+		setCheckIn(novoCheckIn);
+		setCheckOut(novoCheckOut);
 
 	}
 

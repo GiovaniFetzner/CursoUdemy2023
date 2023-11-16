@@ -203,6 +203,30 @@ class ReservationTest {
 		}
 
 	}
+	
+	@Test
+	void validacaoAtualizarReservaDataInvalida04() { // Ano da nova reserva anterior a data do checkIn/Out
+		in = "23/09/2019";
+		out = "26/09/2019";
+		dataCheckIn = LocalDate.parse(in, format);
+		dataCheckOut = LocalDate.parse(out, format);
+		novoIn = "24/09/2015";
+		novoOut = "29/09/2015";
+		novoDataCheckIn = LocalDate.parse(novoIn, format);
+		novoDataCheckOut = LocalDate.parse(novoOut, format);
+		reservationController = null;
+		try {
+			reservationController = new Reservation(roomNumber, dataCheckIn, dataCheckOut);
+			assertThrows(DateErrorException.class, () -> {
+				reservationController.validacaoAtualizarReserva(dataCheckIn, dataCheckOut, novoDataCheckIn,
+						novoDataCheckOut);
+			});
+
+		} catch (DateErrorException e1) {
+
+		}
+
+	}
 
 	@Test
 	void validacaoAtualizarReservaDataAleatoria() { // Teste aleatório
