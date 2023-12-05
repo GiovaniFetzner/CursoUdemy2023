@@ -30,10 +30,10 @@ public class MainInterfaceExercicio {
 		int months = leitura.nextInt();
 		
 		Contract contract = new Contract(number, date, value);
-		ContractService(contract, months);
+		ContractService(contract, months,new PaypalService());
 	}
 	
-	public static void ContractService(Contract contract, int months) {
+	public static void ContractService(Contract contract, int months, OnlinePaymentService onlinePaymentService) {
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		System.out.println("Parcelas: ");
@@ -41,10 +41,9 @@ public class MainInterfaceExercicio {
 		for (int i = 1; i <= months; i++) {
 			double valueInstallment = (contract.getTotalValue() / months);
 			LocalDate dueDate = contract.getDate();
-			OnlinePaymentService paypal = new PaypalService();
 			dueDate = dueDate.plusMonths(i);
-			valueInstallment = paypal.interest(valueInstallment, i);
-			valueInstallment = paypal.paymentFee(valueInstallment);
+			valueInstallment = onlinePaymentService.interest(valueInstallment, i);
+			valueInstallment = onlinePaymentService.paymentFee(valueInstallment);
 			
 			
 			Installment installment = new Installment(dueDate,valueInstallment);
