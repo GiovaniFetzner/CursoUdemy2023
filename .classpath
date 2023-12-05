@@ -9,6 +9,7 @@
 	<classpathentry kind="src" path="desafioEnum"/>
 	<classpathentry kind="src" path="leituraTxt"/>
 	<classpathentry kind="src" path="reservaHotel"/>
+	<classpathentry kind="src" path="interfaceExercicio"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
