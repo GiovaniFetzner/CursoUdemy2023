@@ -23,7 +23,8 @@ public class Diversos {
 		*/
 	
 		
-		
+		AbstractShape circle = new Circle("Azul", 10.00);
+		System.out.println(circle.area());
 		
 		
 		
