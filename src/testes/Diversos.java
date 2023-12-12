@@ -1,11 +1,13 @@
 package testes;
 
-import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Diversos {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
 
 		/*int a = 5;
 		int b = 10;
@@ -21,7 +23,13 @@ public class Diversos {
 		System.out.println(data01);
 		//LocalDate.parse
 		*/
-	
+		System.out.println("Digite uma letra: ");
+		String letra = sc.next();
+		char caracter = letra.charAt(0);
+		if(caracter == 'A') {
+			System.out.println("Voce acertou ! ! !");
+		}
+			
 		
 		AbstractShape circle = new Circle("Azul", 10.00);
 		System.out.println(circle.area());
