@@ -215,7 +215,7 @@ public class ChessMatch {
 				} else {
 					pawnPosition = new Position(4, target.getColumn());
 				}
-				board.placePiece(pawn, pawnPosition);
+				board.placePiece(pawn, pawnPosition); 
 			}
 		}
 
