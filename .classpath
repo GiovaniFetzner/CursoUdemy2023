@@ -11,6 +11,7 @@
 	<classpathentry kind="src" path="reservaHotel"/>
 	<classpathentry kind="src" path="interfaceExercicio"/>
 	<classpathentry kind="src" path="projetoJogoXadrez"/>
+	<classpathentry kind="src" path="generics"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
