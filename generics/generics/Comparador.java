@@ -1,13 +1,18 @@
 package generics;
 
+import java.util.List;
+
 public class Comparador {
 
-	public int maxElement(int[] integers) {
-		int higher = 0;
+	public static <T extends Comparable<T>> T maxElement(List<T> lista) {
+		if (lista.isEmpty()) {
+			 throw new IllegalStateException("Lista vazia");
+			 }
+		T higher = lista.get(0);
 		
-		for (int i = 0; i < integers.length; i++) {
-			if(higher < integers[i]) {
-				higher = integers[i];
+		for (T item : lista) {
+			if (higher.compareTo(item)< 0){
+				higher = item;
 			}
 		}
 		return higher;
