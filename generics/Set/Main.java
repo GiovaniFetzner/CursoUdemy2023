@@ -6,16 +6,18 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
-import java.util.Locale;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		exercicio02();
 
-		Locale.setDefault(new Locale("pt", "BR"));
-		System.setProperty("console.encoding", "UTF-8");
+	}
 
+	private static void exercicio01() {
 		String path = "C:\\Users\\giova\\eclipse-workspace\\JavaCompletoUdemy2023\\Listatxt.txt";
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -44,7 +46,38 @@ public class Main {
 			System.out.println("Erro de leitura");
 			e.printStackTrace();
 		}
-
+	}
+	
+	private static void exercicio02() {
+		
+		Scanner scanner = new Scanner(System.in);
+		int quantity, id;
+		
+		HashSet<Integer> students = new HashSet<>();
+		
+		System.out.println("How many students for course A? ");
+		quantity = scanner.nextInt();
+		for (int i = 0; i < quantity; i++) {
+			id = scanner.nextInt();
+			students.add(id);
+		}
+		
+		System.out.println("How many students for course B? ");
+		quantity = scanner.nextInt();
+		for (int i = 0; i < quantity; i++) {
+			id = scanner.nextInt();
+			students.add(id);
+		}
+		
+		System.out.println("How many students for course C? ");
+		quantity = scanner.nextInt();
+		for (int i = 0; i < quantity; i++) {
+			id = scanner.nextInt();
+			students.add(id);
+		}
+		
+		System.out.println("Total de alunos: " + students.size());
+		
 	}
 
 }
