@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
-		Exercicio02();
+		//Exercicio03();
 
 	}
 
@@ -49,6 +49,7 @@ public class Main {
 		copy(myDoubles, myObjs);
 		printList(myObjs);
 	}
+	
 
 	public static void copy(List<? extends Number> source, List<? super Number> destiny) {
 		for (Number number : source) {
