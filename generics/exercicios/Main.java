@@ -68,11 +68,6 @@ public class Main {
 		double salary;
 		System.out.println("Enter salary: ");
 		salary = scann.nextDouble();
-		
-		//Solução usando metodo declarado:
-		Comparator<Funcionario> comparatorEmployee = (emp1, emp2)-> {
-				return emp1.getEmail().toUpperCase().compareTo(emp2.getEmail().toUpperCase());
-		};
 
 		List<Funcionario> employees = new ArrayList<>();
 		try {
