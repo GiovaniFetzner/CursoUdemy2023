@@ -1,62 +1,6 @@
-Contagem 1
-Contagem 2
-Contagem 3
-Contagem 4
-Contagem 5
-Contagem 6
-Contagem 7
-Contagem 8
-Contagem 9
-Contagem 10
-Contagem 1
-Contagem 2
-Contagem 3
-Contagem 4
-Contagem 5
-Contagem 6
-Contagem 7
-Contagem 8
-Contagem 9
-Contagem 10
-
-Contagem 1
-
-Contagem 2
-
-Contagem 3
-
-Contagem 4
-
-Contagem 5
-
-Contagem 6
-
-Contagem 7
-
-Contagem 8
-
-Contagem 9
-
-Contagem 10
-
-Contagem 1
-Contagem 2
-Contagem 3
-Contagem 4
-Contagem 5
-Contagem 6
-Contagem 7
-Contagem 8
-Contagem 9
-Contagem 10
-
-Contagem 1
-Contagem 2
-Contagem 3
-Contagem 4
-Contagem 5
-Contagem 6
-Contagem 7
-Contagem 8
-Contagem 9
-Contagem 10
+Tv,900.00
+Mouse,50.00
+Tablet,350.50
+HD Case,80.90
+Computer,850.00
+Monitor,290.00
