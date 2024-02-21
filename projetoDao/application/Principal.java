@@ -1,19 +1,19 @@
 package application;
 
-import java.util.Date;
 import java.util.List;
 
 import entities.DaoFactory;
 import entities.Department;
+import entities.DepartmentDao;
 import entities.Seller;
 import entities.SellerDao;
-import entities.SellerDaoJDBC;
 
 public class Principal {
 
 	public static void main(String[] args) {
 
 		SellerDao sellerDao = DaoFactory.createSellerDao();
+		DepartmentDao departamentDao = DaoFactory.createDepartamentDao();
 
 		System.out.println("Teste 1: findById() ");
 		Seller seller = sellerDao.findByID(3);

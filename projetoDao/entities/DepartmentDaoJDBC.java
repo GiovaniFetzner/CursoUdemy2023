@@ -11,6 +11,10 @@ import db.DbException;
 public class DepartmentDaoJDBC implements DepartmentDao{
 	
 	private Connection conn;
+	
+	public DepartmentDaoJDBC(Connection connection) {
+		this.conn = connection;
+	}
 
 	@Override
 	public void insert(Department department) {
