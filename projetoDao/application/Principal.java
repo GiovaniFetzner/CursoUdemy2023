@@ -33,7 +33,6 @@ public class Principal {
 		// Exercicio de ordenação usando stream e sorted
 		System.out.println("Ordenacao dos vendedores pelo id:");
 		List<Seller> lista = list01.stream().sorted((x, y) -> x.getId().compareTo(y.getId())).toList();
-
 		lista.forEach(System.out::println);
 		System.out.println();
 		/*
@@ -62,9 +61,16 @@ public class Principal {
 		System.out.println(department.toString());
 		System.out.println();
 		
-		System.out.println("Teste 7: department findAll() ");
+		System.out.println("Teste 2: department findAll() ");
 		List<Department> departments = departamentDao.findAll();
 		departments.forEach(System.out::println);
+		System.out.println();
+		
+		System.out.println("Teste 3: department insert() ");
+		Department newDep = new Department(null, "Jogos");
+		departamentDao.insert(newDep);
+		department = departamentDao.findByID(4);
+		System.out.println(department.toString());
 		System.out.println();
 
 	}
