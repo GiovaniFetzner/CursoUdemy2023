@@ -25,14 +25,12 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 		try {
 
-			st = conn.prepareStatement("INSERT INTO department (Name) VALUES (?);",
-					Statement.RETURN_GENERATED_KEYS);
-			
-			
+			st = conn.prepareStatement("INSERT INTO department (Name) VALUES (?);", Statement.RETURN_GENERATED_KEYS);
+
 			st.setString(1, department.getName());
 
 			int rowsAffected = st.executeUpdate();
-			
+
 			if (rowsAffected > 0) {
 				ResultSet rs = st.getGeneratedKeys();
 				if (rs.next()) {
@@ -43,7 +41,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 			} else {
 				throw new DbException("Error to insert");
 			}
-			
+
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		} finally {
@@ -53,7 +51,23 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 	@Override
 	public void update(Department department) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+
+		try {
+
+			st = conn.prepareStatement("UPDATE department SET Name = ? WHERE Id = ?;");
+
+			st.setString(1, department.getName());
+			st.setInt(2, department.getId());
+			st.executeUpdate();
+
+			st.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatement(st);
+		}
 
 	}
 
@@ -64,11 +78,11 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		try {
 
 			st = conn.prepareStatement("DELETE FROM department WHERE (department.Id = ?);");
-			
+
 			st.setInt(1, id);
 
-			st.executeUpdate();	
-			
+			st.executeUpdate();
+
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		} finally {

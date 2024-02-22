@@ -66,16 +66,22 @@ public class Principal {
 		departments.forEach(System.out::println);
 		System.out.println();
 		
-		System.out.println("Teste 3: department insert() ");
+		/*System.out.println("Teste 3: department insert() ");
 		Department newDep = new Department(null, "Jogos");
 		departmentDao.insert(newDep);
 		department = departmentDao.findByID(4);
 		System.out.println(department.toString());
 		System.out.println();
-		
+		*/
 		
 		System.out.println("Teste 4: department deleteById() ");
 		departmentDao.deleteById(12);
+		departments = departmentDao.findAll();
+		departments.forEach(System.out::println);
+		System.out.println();
+		
+		System.out.println("Teste 5: department update() ");
+		departmentDao.update(new Department(7, "Sales"));
 		departments = departmentDao.findAll();
 		departments.forEach(System.out::println);
 		System.out.println();
