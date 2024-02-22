@@ -49,6 +49,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 			if (rs.next()) {
 				Department dep = instantiateDepartment(rs);
+				return dep;
 			}
 
 		} catch (SQLException e) {
@@ -66,7 +67,6 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 		dep.setId(rs.getInt("Id"));
 		dep.setName(rs.getString("Name"));
 		return dep;
-
 	}
 
 	@Override

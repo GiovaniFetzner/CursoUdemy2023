@@ -54,6 +54,12 @@ public class Principal {
 
 		System.out.println("Teste 6: seller deleteById() ");
 		sellerDao.deleteById(10);
+		
+		System.out.print("DEPARTMENT Tests:");
+		System.out.println("Teste 1: department findById() ");
+		Department department = departamentDao.findByID(3);
+		System.out.println(department.toString());
+		System.out.println();
 
 	}
 
