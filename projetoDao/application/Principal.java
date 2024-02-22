@@ -13,7 +13,7 @@ public class Principal {
 	public static void main(String[] args) {
 
 		SellerDao sellerDao = DaoFactory.createSellerDao();
-		DepartmentDao departamentDao = DaoFactory.createDepartamentDao();
+		DepartmentDao departmentDao = DaoFactory.createDepartamentDao();
 
 		System.out.println("Teste 1: findById() ");
 		Seller seller = sellerDao.findByID(3);
@@ -57,20 +57,27 @@ public class Principal {
 		
 		System.out.print("DEPARTMENT Tests:");
 		System.out.println("Teste 1: department findById() ");
-		Department department = departamentDao.findByID(3);
+		Department department = departmentDao.findByID(3);
 		System.out.println(department.toString());
 		System.out.println();
 		
 		System.out.println("Teste 2: department findAll() ");
-		List<Department> departments = departamentDao.findAll();
+		List<Department> departments = departmentDao.findAll();
 		departments.forEach(System.out::println);
 		System.out.println();
 		
 		System.out.println("Teste 3: department insert() ");
 		Department newDep = new Department(null, "Jogos");
-		departamentDao.insert(newDep);
-		department = departamentDao.findByID(4);
+		departmentDao.insert(newDep);
+		department = departmentDao.findByID(4);
 		System.out.println(department.toString());
+		System.out.println();
+		
+		
+		System.out.println("Teste 4: department deleteById() ");
+		departmentDao.deleteById(12);
+		departments = departmentDao.findAll();
+		departments.forEach(System.out::println);
 		System.out.println();
 
 	}
